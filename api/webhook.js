@@ -8,7 +8,7 @@ const BOT_TOKEN = process.env.TG_BOT_TOKEN;
 const userSearchResults = new Map();
 
 // Create bot instance
-const bot = new TelegramBot(BOT_TOKEN);
+const bot = new TelegramBot(BOT_TOKEN, { polling: false });
 
 // Utility functions
 const cleanUrl = (url) => url?.replace(/[\[\]]/g, '') || '';
@@ -811,20 +811,21 @@ module.exports = async (req, res) => {
     }
 };
 
-// For local development
-if (require.main === module) {
-    const express = require('express');
-    const app = express();
-    app.use(express.json());
-    
-    // Handle GET requests
-    app.get('/', (req, res) => {
-        res.setHeader('Content-Type', 'text/html');
-        res.send(getHomePage());
-    });
-    
-    // Handle webhook
-    app.post('/api/webhook', module.exports);
-    
-    app.listen(3000, () => console.log('Server running on port 3000'));
-}
+// ✅ Export handler for Vercel
+module.exports = async (req, res) => {
+    try {
+        if (req.method === "POST") {
+            // Pass Telegram updates (messages, button clicks, etc.)
+            await bot.processUpdate(req.body);
+            return res.status(200).send("ok");
+        }
+        if (req.method === "GET") {
+            // For browser visits, return homepage
+            return res.status(200).send(getHomePage());
+        }
+        return res.status(405).send("Method Not Allowed");
+    } catch (err) {
+        console.error("Webhook error:", err);
+        return res.status(500).send("Internal Server Error");
+    }
+};
