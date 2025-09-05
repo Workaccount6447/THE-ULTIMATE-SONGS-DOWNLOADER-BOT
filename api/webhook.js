@@ -417,19 +417,19 @@ const getHomePage = () => {
         </div>
         
         <div class="social-links">
-            <a href='https://t.me/THE_ULTIMATE_SONGS_DOWNLOAD_BOT' target='_blank' class='btn telegram-btn'>
+            <a href='https://t.me/SongsDownload_Robot' target='_blank' class='btn telegram-btn'>
                 <span class="icon">📱</span>
                 Open Telegram Bot
             </a>
             
-            <a href='https://instagram.com/patelharsh.in' target='_blank' class='btn instagram-btn'>
+            <a href='https://t.me/AdvanceRobots' target='_blank' class='btn Telegram-btn'>
                 <span class="icon">📸</span>
-                Follow on Instagram
+                Follow on Telegram 
             </a>
             
-            <a href='https://github.com/patelharsh80874' target='_blank' class='btn github-btn'>
+            <a href='https://t.me/+B31t_T-sbgQ2MWM1' target='_blank' class='btn Telegram-btn'>
                 <span class="icon">💻</span>
-                View GitHub Profile
+                 Chat Group
             </a>
         </div>
         
@@ -508,18 +508,20 @@ const handleStart = async (msg) => {
 
 🎶 Send any song name to search and download high-quality music with cover art and metadata.
 
-🔗 **Connect with me:**
-📸 Instagram: https://instagram.com/patelharsh.in
-💻 GitHub: https://github.com/patelharsh80874
-🌐 Website: https://patelharsh.in
+🔗 **Connect with us:**
+💥 Telegram Channel - @AdvanceRobots
 
 ✨ **Features:**
-• 320kbps audio quality
+• Goo audio quality
 • Embedded cover art
 • Complete metadata
 • Lightning-fast downloads
+• Totally Free
+• All Songs avaliablity
 
-🚀 Just type any song name to get started!`;
+🚀 Just type any song name to get started!
+
+⚡Made With Love by : @AdvanceRobots`;
     
     await bot.sendMessage(chatId, welcomeMessage, { parse_mode: 'Markdown' });
 };
